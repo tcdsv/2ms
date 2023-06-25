@@ -10,6 +10,10 @@ jobs:
     permissions:
       pull-requests: write
     steps:
+      - name: Print target repo
+        run: echo ${{ github.repository }}
+      - name: Print source repo
+        run: echo ${{ github.event.pull_request.head.repo.full_name }}
       - name: Mark as Community if PR is from a fork
         if: github.event.pull_request.head.repo.full_name != github.repository
         uses: actions/github-script@v6
